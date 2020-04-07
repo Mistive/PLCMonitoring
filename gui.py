@@ -11,14 +11,13 @@ from ui_centerCar import Ui_centerCar
 
 class Gui(Monitor):
     def __init__(self):
-        super(Gui, self).__init__()
+        print("Gui: ", Monitor.ui)
+        self.ui = Monitor.ui
+
         self.CAR_NUMBER = [0, 0, 0, 0]
         self.CAR_NUMBER_POS = len(self.CAR_NUMBER) - 1
         self.carMonitoring()
         self.connectButton()
-
-        self.getTest()
-        self.ui.labelConnectCheck.setText("Connected")
 
         print('Done to make MainWindow')
 
