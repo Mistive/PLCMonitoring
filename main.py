@@ -4,13 +4,19 @@ import PySide2 as ref_mod
 from PySide2.QtWidgets import *
 
 from monitor import Monitor
-
+from gui import Gui
+from communication import Communication
 
 def main():
     # installUI()
 
     app = QApplication(sys.argv)
+
     mainWindow = Monitor()
+    gui = Gui()
+    # communication = Communication()
+
+
     mainWindow.show()
     sys.exit(app.exec_())
 
