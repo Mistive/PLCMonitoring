@@ -9,9 +9,8 @@ from ui_leftCar import Ui_leftCar
 from ui_rightCar import Ui_rightCar
 from ui_centerCar import Ui_centerCar
 
-class Gui(Monitor):
+class Gui():
     def __init__(self):
-        print("Gui: ", Monitor.ui)
         self.ui = Monitor.ui
 
         self.CAR_NUMBER = [0, 0, 0, 0]

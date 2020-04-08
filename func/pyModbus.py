@@ -85,6 +85,7 @@ class pyModbus():
                 return False
 
 
+
             ack_info = self.ser.read(3)
             ret = []
             if ack_info is not bytes():  # ack가 아무것도 들어오지 않았을 경우

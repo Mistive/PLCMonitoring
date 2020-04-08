@@ -4,21 +4,8 @@ import PySide2 as ref_mod
 from PySide2.QtWidgets import *
 
 from monitor import Monitor
-from gui import Gui
-from communication import Communication
-
-def main():
-    # installUI()
-
-    app = QApplication(sys.argv)
-
-    mainWindow = Monitor()
-    gui = Gui()
-    # communication = Communication()
 
 
-    mainWindow.show()
-    sys.exit(app.exec_())
 
 def installUI():
     # 파일 이름
@@ -44,5 +31,11 @@ def installUI():
         print("Success to make the file: ", filename, file=sys.stdout)
 
 
-if __name__ == '__main__':
-    main()
+    # installUI()
+
+app = QApplication(sys.argv)
+mainWindow = Monitor()
+mainWindow.show()
+sys.exit(app.exec_())
+
+
