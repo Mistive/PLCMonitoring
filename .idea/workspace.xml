@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="774c77f3-6285-4a64-a31b-e33e9e228b99" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/PLCMonitoring" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\PC\Desktop\문서\01. PC 프로젝트\02. Monitoring\PLC_Monitoring_Using_PC\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aClRS0mAy76Xk4WENQl4Xx4gZU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../03. Excel 정리" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\문서\01. PC 프로젝트\02. Monitoring\PLC_Monitoring_Using_PC" />
+      <recent name="C:\Users\PC\Desktop\문서\01. PC 프로젝트\02. Monitoring\PLC_Monitoring_Using_PC\func" />
+      <recent name="C:\Users\PC\Desktop\문서\01. PC 프로젝트\02. Monitoring\PLC_Monitoring_Using_PC\ui" />
+      <recent name="C:\Users\PC\Desktop\문서\01. PC 프로젝트\02. Monitoring\PLC_Monitoring_Using_PC\ui_py" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PLC_Monitoring_Using_PC" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="774c77f3-6285-4a64-a31b-e33e9e228b99" name="Default Changelist" comment="" />
+      <created>1586247447173</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586247447173</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Change">
+      <created>1586252173424</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586252173424</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Connection Complete">
+      <created>1586766554839</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586766554839</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/PLCMonitoring" />
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="Change" />
+    <MESSAGE value="Connection Complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Connection Complete" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="672" y="348" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586766455848">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="672" y="348" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586766455848" />
+    <state x="651" y="289" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586250535510">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="651" y="289" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586250535510" />
+    <state x="488" y="137" key="CommitChangelistDialog2" timestamp="1586766553531">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="488" y="137" key="CommitChangelistDialog2/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586766553531" />
+    <state x="902" y="594" key="FileChooserDialogImpl" timestamp="1586756558777">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="902" y="594" key="FileChooserDialogImpl/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586756558777" />
+    <state width="1821" height="295" key="GridCell.Tab.0.bottom" timestamp="1586768569257">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1821" height="295" key="GridCell.Tab.0.bottom/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569257" />
+    <state width="1821" height="295" key="GridCell.Tab.0.center" timestamp="1586768569257">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1821" height="295" key="GridCell.Tab.0.center/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569257" />
+    <state width="1821" height="295" key="GridCell.Tab.0.left" timestamp="1586768569256">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1821" height="295" key="GridCell.Tab.0.left/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569256" />
+    <state width="1821" height="295" key="GridCell.Tab.0.right" timestamp="1586768569257">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state width="1821" height="295" key="GridCell.Tab.0.right/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569257" />
+    <state x="424" y="185" key="SettingsEditor" timestamp="1586768552152">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="424" y="185" key="SettingsEditor/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768552152" />
+    <state x="562" y="266" width="718" height="548" key="find.popup" timestamp="1586747125956">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="562" y="266" width="718" height="548" key="find.popup/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586747125956" />
+    <state x="575" y="342" key="git4idea.merge.GitMergeDialog" timestamp="1586767907418">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="575" y="342" key="git4idea.merge.GitMergeDialog/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586767907418" />
+    <state x="575" y="342" key="git4idea.merge.GitPullDialog" timestamp="1586394818974">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="575" y="342" key="git4idea.merge.GitPullDialog/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586394818974" />
+  </component>
+</project>
