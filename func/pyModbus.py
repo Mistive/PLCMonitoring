@@ -7,9 +7,7 @@ class pyModbus():
     def __init__(self, serial):
         self.ser = serial
         self.count = 0
-
-
-
+        self.lock = Lock()
 
     def crc16(data, byInt=False):
         # This code is ported from modbus CRC16(https://www.modbustools.com/modbus_crc16.htm)
@@ -64,7 +62,7 @@ class pyModbus():
 
     # 기능코드 : 02 Coil Read to Input
     def readInputStatus(self, id, address, num):
-        with Lock():
+        with self.lock:
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
             hid = id
 
@@ -111,7 +109,7 @@ class pyModbus():
 
     # 기능코드 : 04
     def readInputRegisters(self, id, address, num):  # 아날로그 레지스터 값을 읽을 때 사용(WORD, 16bit로 읽어옴)
-        with Lock():
+        with self.lock:
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
             hid = id
 
@@ -149,13 +147,13 @@ class pyModbus():
                 ack_crc = self.ser.read(2)
             else:
                 print("No Data")
-                return False
+                return [False]
 
             return ret
 
     # 기능코드 : 05
     def writeSingleCoil(self, id, address, on):
-        with Lock():
+        with self.lock:
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
             hid = id
 
@@ -189,7 +187,7 @@ class pyModbus():
 
     # 기능코드 : 6
     def writeSingleRegister(self, id, address, data):
-        with Lock():
+        with self.lock:
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
             hid = id
 
