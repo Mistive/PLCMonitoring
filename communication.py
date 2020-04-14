@@ -6,8 +6,12 @@ from pyModbus import pyModbus
 
 class signalThread(QThread):
     finished = Signal(dict)  # singal을 통해 어떤 인자를 보낼지 타입을 결정해야 한다. -> 안하면 에러 발생
-    connectfinished = Signal(bool)
+    Sig_connectFinished = Signal(bool)
+    Sig_carButtonPressed = Signal(int)
+    Sig_getCarNumber = Signal(list)
+
     lock = threading.Lock()
+    data = {}
 
     # 설정값 불러오기
     config = configparser.ConfigParser()
@@ -33,40 +37,75 @@ class signalThread(QThread):
                 dsrdtr=(self.serial_conf['DSRDTR'] == 'True')
             )  # timeout 단위: s
             self.mb = pyModbus(self.ser)
-            self.connectfinished.emit(True)
+            self.Sig_connectFinished.emit(True)
 
         except Exception as e:
-            self.connectfinished.emit(False)
+            self.Sig_connectFinished.emit(False)
             if self.ser.is_open:
                 self.ser.close()
             print(e)
 
     def run(self):
         while True:
-            with self.lock:
-                data = {}
-                # plc 연결 주기적 체크
-                data['isConnected'] = self.mb.readInputStatus(1, 1, 1)
-                if data['isConnected'] is False:
-                    self.connectfinished.emit(False)
-                    self.ser.close()
-                else:
-                #plc 정보 가져오기
-                    self.get_info(data)
-                    self.finished.emit(data)
-
             time.sleep(1)
+
+            # plc 연결 주기적 체크
+            if not self.ser.is_open:
+                continue
+
+            self.data['isConnected'] = self.mb.readInputStatus(1, 1, 1)
+
+            if self.data['isConnected'] is False:
+                self.Sig_connectFinished.emit(False)
+                self.ser.close()
+                continue
+
+            #plc 정보 가져오기
+            self.get_info(self.data)
+            self.finished.emit(self.data)
+
 
 
     def get_info(self, data): #read
-        data['test'] = 1
-
+        self.getCarNumber()
 
     @Slot()
     def sendSignal(self, data): #write
         with self.lock:
             #modbus WriteCoil
             print("Send: ", data)
+
+    def buttonCarNumber(self, idx):
+        if not self.ser.is_open:
+            return
+        self.mb.writeSingleCoil(1, idx, True)
+        self.mb.writeSingleCoil(1, idx, False)
+        self.getCarNumber()
+
+    def buttonSet(self):
+        if not self.ser.is_open:
+            return
+
+
+    def buttonIn(self):
+        if not self.ser.is_open:
+            return
+
+    def buttonOut(self):
+        if not self.ser.is_open:
+            return
+
+    def buttonClear(self):
+        if not self.ser.is_open:
+            return
+        print('Clear')
+        self.mb.writeSingleCoil(1, 'f', True)
+        self.mb.writeSingleCoil(1, 'f', False)
+
+    def getCarNumber(self):
+        self.data['CARNUMBER'] = self.mb.readInputRegisters(1, 13002, 4)  # 입출고 출력 번호
+        self.Sig_getCarNumber.emit(self.data['CARNUMBER'])
+
 
 
 

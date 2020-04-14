@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="774c77f3-6285-4a64-a31b-e33e9e228b99" name="Default Changelist" comment="" />
+    <list default="true" id="774c77f3-6285-4a64-a31b-e33e9e228b99" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/PLC_Monitoring_Using_PC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PLC_Monitoring_Using_PC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communication.py" beforeDir="false" afterPath="$PROJECT_DIR$/communication.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func/pyModbus.py" beforeDir="false" afterPath="$PROJECT_DIR$/func/pyModbus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +22,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/PLCMonitoring" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -162,26 +169,30 @@
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
     <state x="902" y="594" key="FileChooserDialogImpl/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586756558777" />
-    <state width="1821" height="295" key="GridCell.Tab.0.bottom" timestamp="1586768569257">
+    <state x="745" y="454" key="Github.CreateGistDialog" timestamp="1586768949402">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="295" key="GridCell.Tab.0.bottom/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569257" />
-    <state width="1821" height="295" key="GridCell.Tab.0.center" timestamp="1586768569257">
+    <state x="745" y="454" key="Github.CreateGistDialog/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768949402" />
+    <state width="1821" height="297" key="GridCell.Tab.0.bottom" timestamp="1586831437190">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="295" key="GridCell.Tab.0.center/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569257" />
-    <state width="1821" height="295" key="GridCell.Tab.0.left" timestamp="1586768569256">
+    <state width="1821" height="297" key="GridCell.Tab.0.bottom/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586831437190" />
+    <state width="1821" height="297" key="GridCell.Tab.0.center" timestamp="1586831437190">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="295" key="GridCell.Tab.0.left/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569256" />
-    <state width="1821" height="295" key="GridCell.Tab.0.right" timestamp="1586768569257">
+    <state width="1821" height="297" key="GridCell.Tab.0.center/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586831437190" />
+    <state width="1821" height="297" key="GridCell.Tab.0.left" timestamp="1586831437190">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="295" key="GridCell.Tab.0.right/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768569257" />
-    <state x="424" y="185" key="SettingsEditor" timestamp="1586768552152">
+    <state width="1821" height="297" key="GridCell.Tab.0.left/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586831437190" />
+    <state width="1821" height="297" key="GridCell.Tab.0.right" timestamp="1586831437190">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state x="424" y="185" key="SettingsEditor/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768552152" />
+    <state width="1821" height="297" key="GridCell.Tab.0.right/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586831437190" />
+    <state x="424" y="185" key="SettingsEditor" timestamp="1586825714901">
+      <screen x="0" y="0" width="1842" height="1080" />
+    </state>
+    <state x="424" y="185" key="SettingsEditor/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586825714901" />
     <state x="562" y="266" width="718" height="548" key="find.popup" timestamp="1586747125956">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>

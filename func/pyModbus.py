@@ -66,7 +66,15 @@ class pyModbus():
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
             hid = id
 
-            address = int(address / 10) * 16 + address % 10 #bit 연산만 해당 연산이 추가됨
+            if type(address) is str:
+                address_hex = int(address[0], 16)
+                address_dec = 0
+                if len(address) > 1:
+                    address_dec = int(address[1:], 10)
+                address = address_dec + address_hex
+            else:
+                address = int(address / 10) * 16 + address % 10
+
             haddressHi = address >> 8
             haddressLo = address & 0xff
 
@@ -81,7 +89,6 @@ class pyModbus():
             except Exception as e:
                 print(e, file=sys.stderr)
                 return False
-
 
 
             ack_info = self.ser.read(3)
@@ -129,6 +136,7 @@ class pyModbus():
                 return False
 
             ack_info = self.ser.read(3)
+
             ret = []
             if ack_info is not bytes():  # ack가 아무것도 들어오지 않았을 경우
 
@@ -157,7 +165,14 @@ class pyModbus():
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
             hid = id
 
-            address = int(address / 10) * 16 + address % 10
+            if type(address) is str:
+                address_hex = int(address[0], 16)
+                address_dec = 0
+                if len(address) > 1:
+                    address_dec = int(address[1:], 10)
+                address = address_dec + address_hex
+            else:
+                address = int(address / 10) * 16 + address % 10
 
             haddressHi = address >> 8
             haddressLo = address & 0xff

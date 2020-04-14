@@ -5,8 +5,6 @@ from PySide2.QtWidgets import *
 
 from monitor import Monitor
 
-
-
 def installUI():
     # 파일 이름
     dir = os.getcwd()  # root 폴더 경로 가져오기    os.getcwd() == __file__
@@ -29,7 +27,6 @@ def installUI():
         out.close()  # 저장 파일 닫기
 
         print("Success to make the file: ", filename, file=sys.stdout)
-
 
     # installUI()
 

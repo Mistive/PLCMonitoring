@@ -3,11 +3,14 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ui_py" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ui" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/func" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ui" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ui_py" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (plcmonitoring)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="pytest" />
   </component>
 </module>

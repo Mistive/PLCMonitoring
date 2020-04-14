@@ -21,22 +21,28 @@ class Monitor(QMainWindow, Ui_monitor):
         self.ui = Ui_monitor()
         self.ui.setupUi(self)
 
-        self.CAR_NUMBER = [0, 0, 0, 0]
-        self.CAR_NUMBER_POS = len(self.CAR_NUMBER) - 1
-        self.carMonitoring()
-        self.connectButton()
-
         self.sig = signalThread()
         self.sig.start()
+
         self.sig.finished.connect(self.update_info)
-        self.sig.connectfinished.connect(self.update_connect)
+        self.sig.Sig_connectFinished.connect(self.update_connect)
+        self.sig.Sig_getCarNumber.connect(self.update_carNumber)
         self.ui.buttonConnect.clicked.connect(lambda: self.sig.set_serial_port())
+        self.carMonitoring()
+        self.connectButton()
 
 
         #click을 눌렀을 경우 데이터를 communication.py에 보내기
         data = {}
         data['send'] = 'Good'
         self.ui.buttonIn.clicked.connect(lambda: self.sig.sendSignal(data))
+
+
+    @Slot()
+    def update_carNumber(self, car_number):
+        car_number.reverse()
+        car_number  = ''.join(str(e) for e in car_number)
+        self.ui.labelCNum.setText(car_number)
 
     @Slot(int)
     def update_connect(self, isconnected):
@@ -60,12 +66,13 @@ class Monitor(QMainWindow, Ui_monitor):
                             self.ui.button5, self.ui.button6, self.ui.button7, self.ui.button8, self.ui.button9]
 
         for i, btn in enumerate(self.button_list):
-            btn.clicked.connect(lambda stat=False, idx=i: self.setCarNumber(idx))
+            # btn.clicked.connect(lambda stat=False, idx=i: self.setCarNumber(idx))
+            btn.clicked.connect(lambda stat=False, idx=i: self.sig.buttonCarNumber(idx))
 
-        self.ui.buttonSet.clicked.connect(self.buttonSet)
-        self.ui.buttonClear.clicked.connect(self.buttonClear)
-        self.ui.buttonIn.clicked.connect(self.buttonIn)
-        self.ui.buttonOut.clicked.connect(self.buttonOut)
+        self.ui.buttonSet.clicked.connect(self.sig.buttonSet)
+        self.ui.buttonClear.clicked.connect(self.sig.buttonClear)
+        self.ui.buttonIn.clicked.connect(self.sig.buttonIn)
+        self.ui.buttonOut.clicked.connect(self.sig.buttonOut)
 
     def carMonitoring(self):
         self.CAR_NUM = 30
@@ -91,35 +98,6 @@ class Monitor(QMainWindow, Ui_monitor):
             self.carLList[floor].labelCarIdx.setText("승용\n" + str(floor * 2 + 1))
             self.carRList[floor].labelCarIdx.setText("승용\n" + str(floor * 2 + 2))
 
-    def buttonSet(self):
-        print("완료 버튼")
-
-    def buttonIn(self):
-        print("입고 버튼")
-
-    def buttonOut(self):
-        print("출고 버튼")
-
-    def buttonClear(self):
-        self.CAR_NUMBER = [0, 0, 0, 0]
-        self.CAR_NUMBER_POS = len(self.CAR_NUMBER) - 1
-        self.setCarNumberText()
-
-    def setCarNumber(self, num):
-        # 입력된 키값 차 번호에 저장
-        self.CAR_NUMBER[self.CAR_NUMBER_POS] = num
-        self.CAR_NUMBER_POS -= 1
-
-        self.setCarNumberText()
-
-        # 초기화
-        if self.CAR_NUMBER_POS < 0:
-            self.CAR_NUMBER = [0 for _ in range(len(self.CAR_NUMBER))]
-            self.CAR_NUMBER_POS = len(self.CAR_NUMBER) - 1
-
-    def setCarNumberText(self):
-        # 차 번호 세팅
-        self.ui.labelCNum.setText(''.join(str(e) for e in self.CAR_NUMBER))
 
 class leftCar(QFrame, Ui_leftCar):
     def __init__(self, parent=None):
