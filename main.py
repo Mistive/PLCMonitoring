@@ -28,7 +28,7 @@ def installUI():
 
         print("Success to make the file: ", filename, file=sys.stdout)
 
-    # installUI()
+# installUI()
 
 app = QApplication(sys.argv)
 mainWindow = Monitor()

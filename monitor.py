@@ -2,6 +2,7 @@ from PySide2.QtWidgets import * #QMainWindow, QWidget, QGridLayout
 from PySide2.QtCore import *    #Signal()
 from PySide2.QtGui import *
 
+import os, sys
 from communication import signalThread
 
 from ui_monitor import Ui_monitor
@@ -28,7 +29,7 @@ class Monitor(QMainWindow, Ui_monitor):
         self.sig.Sig_connectFinished.connect(self.update_connect)
         self.sig.Sig_getCarNumber.connect(self.update_carNumber)
         self.ui.buttonConnect.clicked.connect(lambda: self.sig.set_serial_port())
-        self.carMonitoring()
+        self.update_carMonitor()
         self.connectButton()
 
 
@@ -53,12 +54,23 @@ class Monitor(QMainWindow, Ui_monitor):
             self.ui.labelConnectCheck.setText('Disconnected')
             self.ui.buttonConnect.setText('연결 하기')
 
-    @Slot(dict)
-    def update_info(self, data):
+    @Slot()
+    def update_info(self):
         try:
-            print('Update Info', data)
+            print(self.sig.data)
+
+            self.ui.labelParkingNum.setText(str(self.sig.data['info']['전체주차']))
+            self.ui.labelEmptyNum.setText(str(self.sig.data['info']['전체공차']))
+            self.ui.labelSedanParkingNum.setText(str(self.sig.data['info']['일반주차']))
+            self.ui.labelSedanEmptyNum.setText(str(self.sig.data['info']['일반공차']))
+            self.ui.labelRVParkingNum.setText(str(self.sig.data['info']['RV주차']))
+            self.ui.labelRVEmptyNum.setText(str(self.sig.data['info']['RV공차']))
+            self.ui.labelINSell.setText(str(self.sig.data['info']['적재파렛']))
+            self.ui.labelOUTSell.setText(str(self.sig.data['info']['출고파렛']))
+            # self.data['차량번호'] = self.mb.readInputRegisters(1, 4200, 1)  # 차량 번호
+
         except Exception as e:
-            print(e)
+            print(e, file=sys.stderr)
             pass
 
     def connectButton(self):
@@ -74,7 +86,7 @@ class Monitor(QMainWindow, Ui_monitor):
         self.ui.buttonIn.clicked.connect(self.sig.buttonIn)
         self.ui.buttonOut.clicked.connect(self.sig.buttonOut)
 
-    def carMonitoring(self):
+    def update_carMonitor(self):
         self.CAR_NUM = 30
         self.carLList = []
         self.carRList = []
