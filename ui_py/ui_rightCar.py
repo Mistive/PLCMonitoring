@@ -50,17 +50,17 @@ class Ui_rightCar(object):
         self.gridLayout1.setObjectName(u"gridLayout1")
         self.gridLayout1.setSizeConstraint(QLayout.SetMinimumSize)
         self.gridLayout1.setContentsMargins(0, 0, 0, 0)
-        self.labelCarImg = QLabel(self.rightFloor)
-        self.labelCarImg.setObjectName(u"labelCarImg")
-        self.labelCarImg.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout1.addWidget(self.labelCarImg, 0, 2, 1, 1)
-
         self.labelCarNum = QLabel(self.rightFloor)
         self.labelCarNum.setObjectName(u"labelCarNum")
         self.labelCarNum.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout1.addWidget(self.labelCarNum, 0, 0, 1, 1)
+        self.gridLayout1.addWidget(self.labelCarNum, 0, 2, 1, 1)
+
+        self.labelCarImg = QLabel(self.rightFloor)
+        self.labelCarImg.setObjectName(u"labelCarImg")
+        self.labelCarImg.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout1.addWidget(self.labelCarImg, 0, 0, 1, 1)
 
         self.labelCarIdx = QLabel(self.rightFloor)
         self.labelCarIdx.setObjectName(u"labelCarIdx")
@@ -79,8 +79,8 @@ class Ui_rightCar(object):
 
     def retranslateUi(self, rightCar):
         rightCar.setWindowTitle(QCoreApplication.translate("rightCar", u"Frame", None))
-        self.labelCarImg.setText(QCoreApplication.translate("rightCar", u"XXXX", None))
-        self.labelCarNum.setText(QCoreApplication.translate("rightCar", u"\ucc28\ub7c9 \uc774\ubbf8\uc9c0", None))
+        self.labelCarNum.setText(QCoreApplication.translate("rightCar", u"XXXX", None))
+        self.labelCarImg.setText(QCoreApplication.translate("rightCar", u"\ucc28\ub7c9 \uc774\ubbf8\uc9c0", None))
         self.labelCarIdx.setText(QCoreApplication.translate("rightCar", u"<html><head/><body><p align=\"center\">\uc2b9\uc6a9</p><p align=\"center\">123</p></body></html>", None))
     # retranslateUi
 

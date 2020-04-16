@@ -5,7 +5,7 @@ from pyModbus import pyModbus
 #https://github.com/RavenKyu/OpenTutorials_PyQt/blob/master/QtFramework/QtWidgets/QProgressBar/QProgressBar_01_thread.py
 
 class signalThread(QThread):
-    finished = Signal()  # singal을 통해 어떤 인자를 보낼지 타입을 결정해야 한다. -> 안하면 에러 발생
+    Sig_getInfoFinished = Signal()  # singal을 통해 어떤 인자를 보낼지 타입을 결정해야 한다. -> 안하면 에러 발생
     Sig_connectFinished = Signal(bool)
     Sig_carButtonPressed = Signal(int)
     Sig_getCarNumber = Signal(list)
@@ -60,7 +60,7 @@ class signalThread(QThread):
 
             #plc 정보 가져오기
             self.get_info(self.data)
-            self.finished.emit()
+            self.Sig_getInfoFinished.emit()
             time.sleep(0.1)
 
 
@@ -78,6 +78,12 @@ class signalThread(QThread):
         self.data['info']['RV공차'] = self.mb.readInputRegisters(1, 78, 1)[0]  # RV 공차
         self.data['info']['일반공차'] = self.mb.readInputRegisters(1, 72, 1)[0]  # 일반 공차
 
+        self.data['parkinginfo'] = []
+        img = [None] + self.mb.readInputRegisters(1, 2401, int(self.config['PARKING_INFO']['전체파렛수']))  # 일반 공차
+        number = [None] + self.mb.readInputRegisters(1, 4001, int(self.config['PARKING_INFO']['전체파렛수']))  # 일반 공차
+
+        for i in range(0, int(self.config['PARKING_INFO']['전체파렛수'])+1):
+            self.data['parkinginfo'].append({'img' : img[i], 'number' : number[i]})
 
 
 

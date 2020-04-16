@@ -3,8 +3,6 @@ from subprocess import Popen, PIPE
 import PySide2 as ref_mod
 from PySide2.QtWidgets import *
 
-from monitor import Monitor
-
 def installUI():
     # 파일 이름
     dir = os.getcwd()  # root 폴더 경로 가져오기    os.getcwd() == __file__
@@ -28,11 +26,13 @@ def installUI():
 
         print("Success to make the file: ", filename, file=sys.stdout)
 
-# installUI()
+installUI()
+
+from monitor import Monitor
 
 app = QApplication(sys.argv)
 mainWindow = Monitor()
-mainWindow.show()
+mainWindow.showMaximized()
 sys.exit(app.exec_())
 
 
