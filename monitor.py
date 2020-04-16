@@ -11,6 +11,8 @@ from ui_rightCar import Ui_rightCar
 from ui_centerCar import Ui_centerCar
 from ui_inputLeft import Ui_inputLeft
 from ui_inputRight import Ui_inputRight
+from ui_leftStorage import Ui_leftStorage
+from ui_rightStorage import Ui_rightStorage
 '''
 signal/slot 기능을 활용하여 community.py의 thread에서 연산이 완료된 값을 Monitor로 가져와서 ui에 반영시킴 : Ui를 계속 업데이트 시킬 필요가 없음.(개꿀) 일종의 비동기
 '''
@@ -27,6 +29,7 @@ class Monitor(QMainWindow, Ui_monitor):
         self.sig = signalThread()
         self.sig.start()
 
+
         self.sig.Sig_getInfoFinished.connect(self.update_info)
         self.sig.Sig_connectFinished.connect(self.update_connect)
         self.sig.Sig_getCarNumber.connect(self.update_carNumber)
@@ -34,9 +37,11 @@ class Monitor(QMainWindow, Ui_monitor):
 
         self.carList = [None]
         self.carCList = [None]
+        self.storageList = []
+        self.storageList = []
 
         self.img_parking = [[QPixmap('./img/none.png'), QPixmap('./img/emptyS.png'), QPixmap('./img/parkingS.png')], [QPixmap('./img/none.png'), QPixmap('./img/emptyR.png'), QPixmap('./img/parkingR.png')]]
-
+        self.img_storage = [QPixmap('./img/emptystorage.png'), QPixmap('./img/storage.png')]
         self.init_update_parkingMonitor()
         self.connectButton()
 
@@ -143,6 +148,8 @@ class Monitor(QMainWindow, Ui_monitor):
 
         config = self.sig.config['PARKING_INFO']
         CNUM = int(config['전체파렛수'])
+        STORAGESTART = int(config['보관소시작번호'])
+        STORAGEEND = int(config['보관소끝번호'])
         INPUTCOUNTER = int(config['진입카운터'])
         URS = int(config['상부RV시작번호'])
         URE = int(config['상부RV끝번호'])
@@ -153,7 +160,33 @@ class Monitor(QMainWindow, Ui_monitor):
         NSS = int(config['하부일반시작번호'])
         NSE = int(config['하부일반끝번호'])
 
-        car_floor = int(CNUM / 2) + 1 #진입층 추가
+        car_floor = int(CNUM / 2) + 1  # 진입층 추가
+
+        #보관소 추가
+        self.ui.frameLeftStorage = QFrame()
+        self.ui.frameRightStorage = QFrame()
+        self.ui.layoutLeftStorage = QGridLayout(self.ui.frameLeftStorage)
+        self.ui.layoutRightStorage = QGridLayout(self.ui.frameRightStorage)
+        self.ui.frameLeftStorage.setLayoutDirection(Qt.RightToLeft)
+        self.ui.frameLeftStorage.setFrameShape(QFrame.Box)
+        self.ui.frameRightStorage.setFrameShape(QFrame.Box)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        self.ui.frameLeftStorage.setSizePolicy(sizePolicy4)
+        self.ui.frameRightStorage.setSizePolicy(sizePolicy4)
+        self.ui.frameLeftStorage.setMinimumHeight(100)
+        self.ui.frameLeftStorage.setMaximumHeight(100)
+        self.ui.frameRightStorage.setMinimumHeight(100)
+        self.ui.frameRightStorage.setMaximumHeight(100)
+        # self.ui.frameLeftStorage.setMinimumSize(QSize(110, 80))
+        # self.ui.frameLeftStorage.setMaximumSize(QSize(110, 80))
+        # self.ui.frameRightStorage.setMinimumSize(QSize(110, 80))
+        # self.ui.frameRightStorage.setMaximumSize(QSize(110, 80))
+
+        self.ui.layoutLeftStorage.setSpacing(0)
+        self.ui.layoutRightStorage.setSpacing(0)
+        self.ui.layoutLeftStorage.setMargin(0)
+        self.ui.layoutRightStorage.setMargin(0)
+        car_floor += 1
 
 
         for floor in range(1, car_floor+1):
@@ -164,9 +197,14 @@ class Monitor(QMainWindow, Ui_monitor):
             else:
                 type = 'RV'
                 tidx = 1
-
             if floor == INPUTCOUNTER:
                 self.carCList.append({'widget': centerCar(), 'floor': floor})
+            if floor == INPUTCOUNTER+1:
+                type = '보관소'
+                tidx = 2
+                for idx in range(STORAGESTART, STORAGEEND+1, 2):
+                    self.storageList.append({'widget':leftStorage(), 'idx': idx, 'floor': floor, 'type': type, 'tidx': tidx})
+                    self.storageList.append({'widget':rightStorage(), 'idx': idx+1, 'floor': floor, 'type': type, 'tidx': tidx})
             else:
                 self.carList.append({'widget' : leftCar(), 'floor' : floor, 'type' : type, 'tidx' : tidx})
                 self.carList.append({'widget': rightCar(), 'floor': floor, 'type': type, 'tidx': tidx})
@@ -174,23 +212,41 @@ class Monitor(QMainWindow, Ui_monitor):
 
 
         #Widget 추가
-        idx = 1
+        caridx = 1
         for floor in range(1, car_floor+1):
-            if floor == INPUTCOUNTER:
-                print('진입구: ', car_floor-floor)
+            if floor == INPUTCOUNTER:   #진입구 생성
                 self.ui.layoutLeft.addWidget(inputLeft(), car_floor - floor, 0, 1, 1)
                 self.ui.layoutRight.addWidget(inputRight(), car_floor - floor, 2, 1, 1)
                 self.ui.layoutCenter.addWidget(self.carCList[floor]['widget'], car_floor - floor, 1, 1, 1)
-            else:
-                self.ui.layoutLeft.addWidget(self.carList[idx]['widget'], car_floor - floor, 0, 1, 1)
-                self.ui.layoutRight.addWidget(self.carList[idx + 1]['widget'], car_floor - floor, 2, 1, 1)
+
+            elif floor == INPUTCOUNTER +1:  #보관소 생성
+                self.ui.layoutLeft.addWidget(self.ui.frameLeftStorage, car_floor-floor, 0, 1, 1)
+                self.ui.layoutRight.addWidget(self.ui.frameRightStorage, car_floor-floor, 2, 1, 1)
                 self.ui.layoutCenter.addWidget(self.carCList[floor]['widget'], car_floor - floor, 1, 1, 1)
-                idx += 2
+
+                horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+                for idx in range(0, STORAGEEND-STORAGESTART, 2):
+
+
+                    self.ui.layoutLeftStorage.addItem(horizontalSpacer, STORAGEEND-STORAGESTART - idx, 1, 1, 1)
+                    self.ui.layoutLeftStorage.addWidget(self.storageList[idx]['widget'], STORAGEEND-STORAGESTART - idx, 0, 1, 1)
+                    self.ui.layoutRightStorage.addWidget(self.storageList[idx+1]['widget'],STORAGEEND-STORAGESTART- idx, 0, 1, 1)
+                    self.ui.layoutRightStorage.addItem(horizontalSpacer, STORAGEEND - STORAGESTART - idx, 1, 1, 1)
+
+            else:   #주차 구역 생성
+                self.ui.layoutLeft.addWidget(self.carList[caridx]['widget'], car_floor - floor, 0, 1, 1)
+                self.ui.layoutRight.addWidget(self.carList[caridx + 1]['widget'], car_floor - floor, 2, 1, 1)
+                self.ui.layoutCenter.addWidget(self.carCList[floor]['widget'], car_floor - floor, 1, 1, 1)
+                caridx += 2
 
         for idx, car in enumerate(self.carList):
             if car is None: continue
             car['widget'].labelCarIdx.setText(car['type'] + "\n" + str(idx))
             car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][1])
+
+        for idx, storage in enumerate(self.storageList):
+            storage['widget'].labelCarIdx.setText(str(storage['idx']))
+            storage['widget'].labelCarImg.setPixmap(self.img_storage[1])
 
 
 
@@ -217,5 +273,15 @@ class inputLeft(QFrame, Ui_inputLeft):
 class inputRight(QFrame, Ui_inputRight):
     def __init__(self, parent=None):
         super(inputRight, self).__init__()
+        self.setupUi(self)
+
+class leftStorage(QFrame, Ui_leftStorage):
+    def __init__(self, parent=None):
+        super(leftStorage, self).__init__()
+        self.setupUi(self)
+
+class rightStorage(QFrame, Ui_rightStorage):
+    def __init__(self, parent=None):
+        super(rightStorage, self).__init__()
         self.setupUi(self)
 

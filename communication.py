@@ -78,6 +78,7 @@ class signalThread(QThread):
         self.data['info']['RV공차'] = self.mb.readInputRegisters(1, 78, 1)[0]  # RV 공차
         self.data['info']['일반공차'] = self.mb.readInputRegisters(1, 72, 1)[0]  # 일반 공차
 
+
         self.data['parkinginfo'] = []
         img = [None] + self.mb.readInputRegisters(1, 2401, int(self.config['PARKING_INFO']['전체파렛수']))  # 일반 공차
         number = [None] + self.mb.readInputRegisters(1, 4001, int(self.config['PARKING_INFO']['전체파렛수']))  # 일반 공차
