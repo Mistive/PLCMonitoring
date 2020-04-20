@@ -193,7 +193,7 @@ class Ui_monitor(object):
 
         self.gridLayout_8.addWidget(self.BoxInfo, 2, 1, 1, 1)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(0, 0, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout_8.addItem(self.verticalSpacer, 1, 1, 1, 1)
 
@@ -450,11 +450,21 @@ class Ui_monitor(object):
         self.verticalLayout_2.addWidget(self.buttonConnect)
 
 
-        self.gridLayout_9.addLayout(self.verticalLayout_2, 0, 1, 1, 1)
+        self.gridLayout_9.addLayout(self.verticalLayout_2, 0, 2, 1, 1)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_9.addItem(self.horizontalSpacer, 0, 0, 1, 1)
+        self.gridLayout_9.addItem(self.horizontalSpacer, 0, 1, 1, 1)
+
+        self.buttonExit = QPushButton(self.frame)
+        self.buttonExit.setObjectName(u"buttonExit")
+        self.buttonExit.setMinimumSize(QSize(75, 61))
+        self.buttonExit.setMaximumSize(QSize(75, 61))
+        font5 = QFont()
+        font5.setPointSize(40)
+        self.buttonExit.setFont(font5)
+
+        self.gridLayout_9.addWidget(self.buttonExit, 0, 0, 1, 1)
 
 
         self.gridLayout_8.addWidget(self.frame, 0, 1, 1, 1)
@@ -592,6 +602,7 @@ class Ui_monitor(object):
         self.button1.setText(QCoreApplication.translate("monitor", u"1", None))
         self.labelConnectCheck.setText(QCoreApplication.translate("monitor", u"Disconnected", None))
         self.buttonConnect.setText(QCoreApplication.translate("monitor", u"\uc5f0\uacb0 \ud558\uae30", None))
+        self.buttonExit.setText(QCoreApplication.translate("monitor", u"X", None))
     # retranslateUi
 
 

@@ -32,7 +32,7 @@ from monitor import Monitor
 
 app = QApplication(sys.argv)
 mainWindow = Monitor()
-mainWindow.showMaximized()
+mainWindow.showFullScreen()
 sys.exit(app.exec_())
 
 

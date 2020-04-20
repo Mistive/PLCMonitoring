@@ -13,6 +13,7 @@ from ui_inputLeft import Ui_inputLeft
 from ui_inputRight import Ui_inputRight
 from ui_leftStorage import Ui_leftStorage
 from ui_rightStorage import Ui_rightStorage
+from ui_changeCarNumber import Ui_changeCarNumber
 '''
 signal/slot 기능을 활용하여 community.py의 thread에서 연산이 완료된 값을 Monitor로 가져와서 ui에 반영시킴 : Ui를 계속 업데이트 시킬 필요가 없음.(개꿀) 일종의 비동기
 '''
@@ -37,22 +38,24 @@ class Monitor(QMainWindow, Ui_monitor):
         self.img_parking = [[QPixmap('./img/none.png'), QPixmap('./img/emptyS.png'), QPixmap('./img/parkingS.png')], [QPixmap('./img/none.png'), QPixmap('./img/emptyR.png'), QPixmap('./img/parkingR.png')]]
         self.img_storage = [QPixmap('./img/emptystorage.png'), QPixmap('./img/storage.png')]
         self.img_lift = [QPixmap('./img/none.png'), QPixmap('./img/emptyS.png'), QPixmap('./img/emptyS.png'), QPixmap('./img/parkingS.png')]
+
         self.init_update_parkingMonitor()
         self.connectButton()
 
         self.sig.Sig_getInfoFinished.connect(self.update_info)
         self.sig.Sig_connectFinished.connect(self.update_connect)
         self.sig.Sig_getCarNumber.connect(self.update_carNumber)
+        self.ui.buttonExit.clicked.connect(lambda: self.close())
         self.ui.buttonConnect.clicked.connect(lambda: self.sig.set_serial_port())
 
         self.ui.scrollArea.verticalScrollBar().rangeChanged.connect(self.update_init_scrollArea)
+
 
 
         #click을 눌렀을 경우 데이터를 communication.py에 보내기
         data = {}
         data['send'] = 'Good'
         self.ui.buttonIn.clicked.connect(lambda: self.sig.sendSignal(data))
-
 
     @Slot()
     def update_init_scrollArea(self):
@@ -120,7 +123,6 @@ class Monitor(QMainWindow, Ui_monitor):
         self.ui.buttonClear.clicked.connect(self.sig.buttonClear)
         self.ui.buttonIn.clicked.connect(self.sig.buttonIn)
         self.ui.buttonOut.clicked.connect(self.sig.buttonOut)
-
 
     def init_update_parkingMonitor(self):
 
@@ -240,7 +242,8 @@ class Monitor(QMainWindow, Ui_monitor):
 
         for idx, car in enumerate(self.carList):
             if car is None: continue
-            clickable(car['widget']).connect(self.showText)
+            clickable(car['widget']).connect(self.changeCarNumberWindow)
+
             car['widget'].labelCarIdx.setText(car['type'] + "\n" + str(idx))
             car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][1])
 
@@ -259,8 +262,11 @@ class Monitor(QMainWindow, Ui_monitor):
             else:
                 lift['widget'].labelCarImg.setPixmap(self.img_lift[0])
 
-    def showText(self):
-        print("djifsdojfiosdjfiosdfjsdojfiosdjfiojsdiofjsodjfoijfiosdj")
+    def changeCarNumberWindow(self):
+        self.cN = changeCarNumber()
+        self.cN.showFullScreen()
+
+
 
 #label, frame 등을 click 이벤트가 가능하게 만들어 주는 것
 def clickable(widget):
@@ -282,6 +288,20 @@ def clickable(widget):
     filter = Filter(widget)
     widget.installEventFilter(filter)
     return filter.clicked
+
+
+class changeCarNumber(QWidget, Ui_changeCarNumber):
+    def __init__(self, parent=None):
+        super(changeCarNumber, self).__init__(parent)
+        self.setupUi(self)
+
+        self.buttonReturn.clicked.connect(self.returnWindow)
+
+    def returnWindow(self):
+        self.close()
+
+
+
 
 class leftCar(QFrame, Ui_leftCar):
     def __init__(self, parent=None):

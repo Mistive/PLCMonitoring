@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>changeCarNumber</class>
+ <widget class="QWidget" name="changeCarNumber">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>842</width>
-    <height>642</height>
+    <width>844</width>
+    <height>660</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QFrame" name="frame_2">
      <property name="minimumSize">
       <size>
-       <width>0</width>
+       <width>826</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>826</width>
        <height>60</height>
       </size>
      </property>
@@ -34,10 +37,81 @@
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>242</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="buttonReturn">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>241</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>19</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>차량 번호 수정 회면</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="1" column="0" alignment="Qt::AlignHCenter">
     <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>826</width>
+       <height>576</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>826</width>
+       <height>576</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -45,18 +119,594 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="1">
-       <widget class="QFrame" name="frame_5">
+      <item row="0" column="0" rowspan="2">
+       <widget class="QFrame" name="frame_3">
+        <property name="minimumSize">
+         <size>
+          <width>460</width>
+          <height>540</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>460</width>
+          <height>560</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Plain</enum>
         </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="2" column="0" colspan="3">
+          <widget class="QFrame" name="frame_7">
+           <property name="minimumSize">
+            <size>
+             <width>350</width>
+             <height>400</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>10000</width>
+             <height>10000</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="gridLayout_5">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QPushButton" name="button1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="button2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QPushButton" name="button3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="button4">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="button5">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QPushButton" name="button6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QPushButton" name="button7">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>7</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QPushButton" name="button8">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QPushButton" name="button9">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>9</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="button0">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1" colspan="2">
+               <widget class="QPushButton" name="buttonClear">
+                <property name="minimumSize">
+                 <size>
+                  <width>170</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>170</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>정정</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="1">
+             <layout class="QGridLayout" name="gridLayout_6">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QPushButton" name="buttonNext">
+                <property name="minimumSize">
+                 <size>
+                  <width>170</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>170</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>다음</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="buttonBefore">
+                <property name="minimumSize">
+                 <size>
+                  <width>170</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>170</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>이전</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QPushButton" name="buttonModify">
+                <property name="minimumSize">
+                 <size>
+                  <width>170</width>
+                  <height>130</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>170</width>
+                  <height>130</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>수정</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="buttonSet">
+                <property name="minimumSize">
+                 <size>
+                  <width>170</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>170</width>
+                  <height>80</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>완료</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="2">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="labelCarNumber">
+           <property name="font">
+            <font>
+             <pointsize>75</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>XXXX</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
+       <widget class="QFrame" name="frame_5">
+        <property name="minimumSize">
+         <size>
+          <width>340</width>
+          <height>340</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>340</width>
+          <height>340</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>차량 번호.</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButton">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>적  재</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>파레트 번호.</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" alignment="Qt::AlignRight">
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>XX</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" alignment="Qt::AlignRight">
+          <widget class="QLabel" name="label_6">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>XX</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>삭  제</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_7">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>69</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>IMG</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
        <widget class="QFrame" name="frame_4">
+        <property name="minimumSize">
+         <size>
+          <width>340</width>
+          <height>210</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -69,532 +719,23 @@
         <property name="frameShadow">
          <enum>QFrame::Plain</enum>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="0" rowspan="2">
-       <widget class="QFrame" name="frame_3">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>500</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Box</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="0">
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>91</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="0" column="2">
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>91</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="0" column="1">
-          <widget class="QFrame" name="frame_6">
-           <property name="minimumSize">
-            <size>
-             <width>320</width>
-             <height>102</height>
-            </size>
-           </property>
+        <layout class="QGridLayout" name="gridLayout_9">
+         <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+          <widget class="QLabel" name="label_8">
            <property name="maximumSize">
             <size>
-             <width>320</width>
-             <height>102</height>
+             <width>16777215</width>
+             <height>16777215</height>
             </size>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+           <property name="font">
+            <font>
+             <pointsize>69</pointsize>
+            </font>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <property name="text">
+            <string>IMG</string>
            </property>
-          </widget>
-         </item>
-         <item row="1" column="0" colspan="3">
-          <widget class="QFrame" name="frame_7">
-           <property name="minimumSize">
-            <size>
-             <width>520</width>
-             <height>400</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>520</width>
-             <height>400</height>
-            </size>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <widget class="QPushButton" name="button7">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>202</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>7</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button3">
-            <property name="geometry">
-             <rect>
-              <x>200</x>
-              <y>50</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>3</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button5">
-            <property name="geometry">
-             <rect>
-              <x>119</x>
-              <y>126</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>5</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button6">
-            <property name="geometry">
-             <rect>
-              <x>200</x>
-              <y>126</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>6</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button0">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>278</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button9">
-            <property name="geometry">
-             <rect>
-              <x>200</x>
-              <y>202</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>9</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button1">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>50</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>1</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button4">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>126</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>4</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button8">
-            <property name="geometry">
-             <rect>
-              <x>119</x>
-              <y>202</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>8</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="button2">
-            <property name="geometry">
-             <rect>
-              <x>119</x>
-              <y>50</y>
-              <width>70</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>2</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="buttonClear">
-            <property name="geometry">
-             <rect>
-              <x>118</x>
-              <y>280</y>
-              <width>150</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>130</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>정정</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="buttonSet">
-            <property name="geometry">
-             <rect>
-              <x>280</x>
-              <y>280</y>
-              <width>150</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>130</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>완료</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="buttonModify">
-            <property name="geometry">
-             <rect>
-              <x>281</x>
-              <y>170</y>
-              <width>150</width>
-              <height>100</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>130</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>수정</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="buttonBefore">
-            <property name="geometry">
-             <rect>
-              <x>280</x>
-              <y>90</y>
-              <width>150</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>130</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>이전</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="buttonNext">
-            <property name="geometry">
-             <rect>
-              <x>280</x>
-              <y>20</y>
-              <width>150</width>
-              <height>70</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>130</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>다음</string>
-            </property>
-           </widget>
           </widget>
          </item>
         </layout>
