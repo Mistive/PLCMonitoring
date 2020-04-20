@@ -10,6 +10,7 @@ class signalThread(QThread):
     Sig_carButtonPressed = Signal(int)
     Sig_getCarNumber = Signal(list)
 
+
     lock = threading.Lock()
     data = {}
 
@@ -37,7 +38,9 @@ class signalThread(QThread):
                 dsrdtr=(self.serial_conf['DSRDTR'] == 'True')
             )  # timeout 단위: s
             self.mb = pyModbus(self.ser)
-            self.Sig_connectFinished.emit(True)
+            self.data['isConnected'] = self.mb.readInputStatus(1, 1, 1)
+            if self.data['isConnected'] is not False:
+                self.Sig_connectFinished.emit(True)
 
         except Exception as e:
             self.Sig_connectFinished.emit(False)
@@ -57,11 +60,14 @@ class signalThread(QThread):
                 self.ser.close()
                 time.sleep(1)
                 continue
+            self.Sig_connectFinished.emit(True)
 
             #plc 정보 가져오기
+
+
             self.get_info(self.data)
             self.Sig_getInfoFinished.emit()
-            time.sleep(0.1)
+            time.sleep(1)
 
 
 
@@ -78,15 +84,15 @@ class signalThread(QThread):
         self.data['info']['RV공차'] = self.mb.readInputRegisters(1, 78, 1)[0]  # RV 공차
         self.data['info']['일반공차'] = self.mb.readInputRegisters(1, 72, 1)[0]  # 일반 공차
 
-
+        # 격납고 데이터 가져오기
         self.data['parkinginfo'] = []
         img = [None] + self.mb.readInputRegisters(1, 2401, int(self.config['PARKING_INFO']['전체파렛수']))  # 일반 공차
         number = [None] + self.mb.readInputRegisters(1, 4001, int(self.config['PARKING_INFO']['전체파렛수']))  # 일반 공차
-
         for i in range(0, int(self.config['PARKING_INFO']['전체파렛수'])+1):
             self.data['parkinginfo'].append({'img' : img[i], 'number' : number[i]})
 
-
+        #리프트 데이터 가져오기
+        self.data['lift'] = [None] + self.mb.readInputRegisters(1, 2101, int(self.config['PARKING_INFO']['전체파렛수']) + 1)
 
 
 

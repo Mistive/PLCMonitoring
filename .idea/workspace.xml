@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="774c77f3-6285-4a64-a31b-e33e9e228b99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ui/changeCarNumber.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui_py/ui_changeCarNumber.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/communication.py" beforeDir="false" afterPath="$PROJECT_DIR$/communication.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/func/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/func/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/centerCar.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/centerCar.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/inputLeft.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/inputLeft.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/inputRight.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/inputRight.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/monitor.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/monitor.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_py/ui_centerCar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_py/ui_centerCar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_py/ui_inputLeft.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_py/ui_inputLeft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_py/ui_inputRight.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_py/ui_inputRight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_py/ui_monitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_py/ui_monitor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587024932937</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ADD&#10;&#10;보관소 추가">
+      <created>1587030998083</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587030998083</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +191,8 @@
     <MESSAGE value="Modify pyModbus.py&#10;Can use str and int type in Coil function's address." />
     <MESSAGE value="ADD Basic Parking Info" />
     <MESSAGE value="ADD&#10;&#10;plc로부터 차량 모니터링 시스템 정보 가져오기.&#10;&#10;이미지 반영하기" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADD&#10;&#10;plc로부터 차량 모니터링 시스템 정보 가져오기.&#10;&#10;이미지 반영하기" />
+    <MESSAGE value="ADD&#10;&#10;보관소 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADD&#10;&#10;보관소 추가" />
   </component>
   <component name="WindowStateProjectService">
     <state x="672" y="348" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586766455848">
@@ -186,10 +203,10 @@
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
     <state x="651" y="289" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586250535510" />
-    <state x="488" y="137" key="CommitChangelistDialog2" timestamp="1587024931817">
+    <state x="488" y="137" key="CommitChangelistDialog2" timestamp="1587030996937">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state x="488" y="137" key="CommitChangelistDialog2/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587024931817" />
+    <state x="488" y="137" key="CommitChangelistDialog2/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587030996937" />
     <state x="842" y="323" key="FileChooserDialogImpl" timestamp="1586853704029">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
@@ -198,30 +215,30 @@
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
     <state x="745" y="454" key="Github.CreateGistDialog/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586768949402" />
-    <state width="1821" height="297" key="GridCell.Tab.0.bottom" timestamp="1587030981394">
+    <state width="1821" height="297" key="GridCell.Tab.0.bottom" timestamp="1587348875232">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="297" key="GridCell.Tab.0.bottom/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587030981394" />
-    <state width="1821" height="297" key="GridCell.Tab.0.center" timestamp="1587030981394">
+    <state width="1821" height="297" key="GridCell.Tab.0.bottom/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587348875232" />
+    <state width="1821" height="297" key="GridCell.Tab.0.center" timestamp="1587348875232">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="297" key="GridCell.Tab.0.center/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587030981394" />
-    <state width="1821" height="297" key="GridCell.Tab.0.left" timestamp="1587030981394">
+    <state width="1821" height="297" key="GridCell.Tab.0.center/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587348875232" />
+    <state width="1821" height="297" key="GridCell.Tab.0.left" timestamp="1587348875232">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="297" key="GridCell.Tab.0.left/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587030981394" />
-    <state width="1821" height="297" key="GridCell.Tab.0.right" timestamp="1587030981394">
+    <state width="1821" height="297" key="GridCell.Tab.0.left/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587348875232" />
+    <state width="1821" height="297" key="GridCell.Tab.0.right" timestamp="1587348875232">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state width="1821" height="297" key="GridCell.Tab.0.right/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587030981394" />
+    <state width="1821" height="297" key="GridCell.Tab.0.right/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587348875232" />
     <state x="424" y="185" key="SettingsEditor" timestamp="1586825714901">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
     <state x="424" y="185" key="SettingsEditor/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1586825714901" />
-    <state x="513" y="276" key="Vcs.Push.Dialog.v2" timestamp="1587024945395">
+    <state x="513" y="276" key="Vcs.Push.Dialog.v2" timestamp="1587031005510">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>
-    <state x="513" y="276" key="Vcs.Push.Dialog.v2/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587024945395" />
+    <state x="513" y="276" key="Vcs.Push.Dialog.v2/1920.0.1474.864/0.0.1842.1080@0.0.1842.1080" timestamp="1587031005510" />
     <state x="1032" y="246" width="718" height="548" key="find.popup" timestamp="1586833694385">
       <screen x="0" y="0" width="1842" height="1080" />
     </state>

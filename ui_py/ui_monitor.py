@@ -488,20 +488,21 @@ class Ui_monitor(object):
         self.gridLayout_11.setSpacing(0)
         self.gridLayout_11.setObjectName(u"gridLayout_11")
         self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.frameRight = QFrame(self.frameMonitor)
+        self.frameRight.setObjectName(u"frameRight")
+        sizePolicy.setHeightForWidth(self.frameRight.sizePolicy().hasHeightForWidth())
+        self.frameRight.setSizePolicy(sizePolicy)
+        self.frameRight.setMinimumSize(QSize(0, 0))
+        self.frameRight.setFrameShape(QFrame.NoFrame)
 
-        self.gridLayout_11.addItem(self.horizontalSpacer_2, 0, 4, 1, 1)
-
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_11.addItem(self.horizontalSpacer_3, 0, 0, 1, 1)
+        self.gridLayout_11.addWidget(self.frameRight, 0, 3, 1, 1)
 
         self.frameCenter = QFrame(self.frameMonitor)
         self.frameCenter.setObjectName(u"frameCenter")
         sizePolicy.setHeightForWidth(self.frameCenter.sizePolicy().hasHeightForWidth())
         self.frameCenter.setSizePolicy(sizePolicy)
         self.frameCenter.setMinimumSize(QSize(0, 0))
-        self.frameCenter.setFrameShape(QFrame.Box)
+        self.frameCenter.setFrameShape(QFrame.NoFrame)
         self.frameCenter.setLineWidth(3)
 
         self.gridLayout_11.addWidget(self.frameCenter, 0, 2, 1, 1)
@@ -516,14 +517,13 @@ class Ui_monitor(object):
 
         self.gridLayout_11.addWidget(self.frameLeft, 0, 1, 1, 1)
 
-        self.frameRight = QFrame(self.frameMonitor)
-        self.frameRight.setObjectName(u"frameRight")
-        sizePolicy.setHeightForWidth(self.frameRight.sizePolicy().hasHeightForWidth())
-        self.frameRight.setSizePolicy(sizePolicy)
-        self.frameRight.setMinimumSize(QSize(0, 0))
-        self.frameRight.setFrameShape(QFrame.NoFrame)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_11.addWidget(self.frameRight, 0, 3, 1, 1)
+        self.gridLayout_11.addItem(self.horizontalSpacer_2, 0, 4, 1, 1)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_11.addItem(self.horizontalSpacer_3, 0, 0, 1, 1)
 
 
         self.gridLayout_10.addWidget(self.frameMonitor, 0, 0, 1, 1)
