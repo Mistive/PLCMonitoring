@@ -64,14 +64,18 @@ class pyModbus():
     def readInputStatus(self, id, address, num):
         with self.lock:
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
+            if num > 2000:
+                print("ERROR: 한 번에 요청가능한 비트의 개수가 2000개입니다. 1register => 16bit, 16bit * 125 = 2000")
+                return False
             hid = id
 
             if type(address) is str:
-                address_hex = int(address[0], 16)
+                address_hex = int(address[len(address) - 1], 16)
+
                 address_dec = 0
                 if len(address) > 1:
-                    address_dec = int(address[1:], 10)
-                address = address_dec + address_hex
+                    address_dec = int(address[0:len(address) - 1], 10)
+                address = address_dec * 16 + address_hex
             else:
                 address = int(address / 10) * 16 + address % 10
 
@@ -89,7 +93,6 @@ class pyModbus():
             except Exception as e:
                 print(e, file=sys.stderr)
                 return False
-
 
             ack_info = self.ser.read(3)
             ret = []
@@ -115,8 +118,12 @@ class pyModbus():
             return ret
 
     # 기능코드 : 04
+    #register는 최대 125개까지밖에 입력받을 수 없다
     def readInputRegisters(self, id, address, num):  # 아날로그 레지스터 값을 읽을 때 사용(WORD, 16bit로 읽어옴)
         with self.lock:
+            if num > 125:
+                print("ERROR: 한 번에 요청 가능한 레지스터 개수가 125개 입니다.(1register = 2bytes)")
+                return False
             # id : 국번, address : 시작 레지스터 주소, num : 읽어들 데이터 개수
             hid = id
 
@@ -166,11 +173,13 @@ class pyModbus():
             hid = id
 
             if type(address) is str:
-                address_hex = int(address[0], 16)
+                address_hex = int(address[len(address) - 1], 16)
+
                 address_dec = 0
                 if len(address) > 1:
-                    address_dec = int(address[1:], 10)
-                address = address_dec + address_hex
+                    address_dec = int(address[0:len(address) - 1], 10)
+                address = address_dec*16 + address_hex
+
             else:
                 address = int(address / 10) * 16 + address % 10
 
@@ -230,19 +239,27 @@ class pyModbus():
         # req와 ack가 동일하면 정상 응답
 
 
-# if __name__ == '__main__':
-#     # ser = serial.Serial("/dev/ttyUSB0", 115200, timeout=0.1)  # timeout 단위: s
-#     ser = serial.Serial("COM3", baudrate=115200, timeout=0.1)  # timeout 단위: s
-#     # example
-#
-#     modbus = pyModbus(ser)
-#     # 반환값 : ret-> bit 값이 각 list에 들어가있음.
-#     while(True):
-#         # modbus.writeSingleCoil(1, 0, on=True)
-#         #modbus.writeSingleRegister(id=1, address=1, data=300)
-#         #ret = modbus.readInputStatus(id=1, address=1, num=1)
-#         #print(ret)
-#         ret = modbus.readInputRegisters(id=1, address=0, num=1)
-#         print(ret)
-#         print("Clear")
-#         time.sleep(0.1)
+if __name__ == '__main__':
+
+    import serial
+    import time
+    # ser = serial.Serial("/dev/ttyUSB0", 115200, timeout=0.1)  # timeout 단위: s
+    ser = serial.Serial("COM3", baudrate=115200, timeout=0.1)  # timeout 단위: s
+    # example
+
+    modbus = pyModbus(ser)
+    # 반환값 : ret-> bit 값이 각 list에 들어가있음.
+    start = time.time()  # 시작 시간 저장
+    while(True):
+
+        # modbus.writeSingleCoil(1, 0, on=True)
+        #modbus.writeSingleRegister(id=1, address=1, data=300)
+        #ret = modbus.readInputStatus(id=1, address=1, num=1)
+        #print(ret)
+        ret = modbus.readInputRegisters(id=1, address=0, num=125) #가져올 수 있는 최대 개수가 125개
+        # for i, v in enumerate(ret):
+        #     print(i, v)
+        # print("Clear")
+        break
+
+    print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간

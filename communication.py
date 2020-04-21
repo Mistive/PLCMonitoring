@@ -9,7 +9,9 @@ class signalThread(QThread):
     Sig_connectFinished = Signal(bool)
     Sig_carButtonPressed = Signal(int)
     Sig_getCarNumber = Signal(list)
-
+    Sig_getCarNumberInModify = Signal(list)
+    Sig_changeModifyButtonColor = Signal(list)
+    Sig_gerCurrentInfoInModify = Signal(list)
 
     lock = threading.Lock()
     data = {}
@@ -20,6 +22,7 @@ class signalThread(QThread):
     serial_conf = config['SERIAL']
     ser = serial.Serial()
     mb = pyModbus(ser)
+    currentWindow = 12
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -49,6 +52,7 @@ class signalThread(QThread):
             print(e)
 
     def run(self):
+        init_flag = False
         while True:
             # plc 연결 주기적 체크
             if not self.ser.is_open:
@@ -63,11 +67,13 @@ class signalThread(QThread):
             self.Sig_connectFinished.emit(True)
 
             #plc 정보 가져오기
+            # self.setWindowIdx(self.currentWindow)
 
 
             self.get_info(self.data)
             self.Sig_getInfoFinished.emit()
-            time.sleep(1)
+
+
 
 
 
@@ -91,8 +97,12 @@ class signalThread(QThread):
         for i in range(0, int(self.config['PARKING_INFO']['전체파렛수'])+1):
             self.data['parkinginfo'].append({'img' : img[i], 'number' : number[i]})
 
-        #리프트 데이터 가져오기
+        #리프트 데이터 가져오기X
         self.data['lift'] = [None] + self.mb.readInputRegisters(1, 2101, int(self.config['PARKING_INFO']['전체파렛수']) + 1)
+
+        self.getModifyButtonState()
+        self.getCarNumberInModify()
+        self.getCurrentCarNumberInModify()
 
 
 
@@ -109,7 +119,6 @@ class signalThread(QThread):
         self.mb.writeSingleCoil(1, idx, True)
         self.mb.writeSingleCoil(1, idx, False)
         self.getCarNumber()
-
     @Slot()
     def buttonSet(self):
         if not self.ser.is_open:
@@ -117,17 +126,14 @@ class signalThread(QThread):
         self.mb.writeSingleCoil(1, 'c', True)
         self.mb.writeSingleCoil(1, 'c', False)
         self.getCarNumber()
-
     @Slot()
     def buttonIn(self):
         if not self.ser.is_open:
             return
-
     @Slot()
     def buttonOut(self):
         if not self.ser.is_open:
             return
-
     @Slot()
     def buttonClear(self):
         if not self.ser.is_open:
@@ -142,11 +148,72 @@ class signalThread(QThread):
         self.Sig_getCarNumber.emit(self.data['CARNUMBER'])
 
 
+    @Slot()
+    def buttonCarNumberInModify(self, idx):
+        if not self.ser.is_open:
+            return
+        self.mb.writeSingleCoil(1, 50+idx, True)
+        self.mb.writeSingleCoil(1, 50+idx, False)
+        self.getCarNumberInModify()
+
+    @Slot()
+    def buttonSetInModify(self, pressed):
+        if pressed:
+            self.mb.writeSingleCoil(1, '5c', True)
+
+        else:
+            self.mb.writeSingleCoil(1, '5c', False)
+        self.getCurrentCarNumberInModify()
+
+    @Slot()
+    def buttonClearInModify(self):
+        self.mb.writeSingleCoil(1, '5f', True)
+        self.mb.writeSingleCoil(1, '5f', False)
+        self.getCarNumberInModify()
+        self.getModifyButtonState()
 
 
+    @Slot()
+    def buttonNextInModify(self):
+        self.mb.writeSingleCoil(1, '5a', True)
+        self.mb.writeSingleCoil(1, '5a', False)
+        self.getCurrentCarNumberInModify()
+
+    @Slot()
+    def buttonBeforeInModify(self):
+        self.mb.writeSingleCoil(1, '5b', True)
+        self.mb.writeSingleCoil(1, '5b', False)
+        self.getCurrentCarNumberInModify()
+
+    @Slot()
+    def buttonModifyInModify(self):
+        self.mb.writeSingleCoil(1, '5d', True)
+        self.mb.writeSingleCoil(1, '5d', False)
+        self.getModifyButtonState()
 
 
+    def getCarNumberInModify(self):
+        modifycar = self.mb.readInputRegisters(1, 3052, 1)
+        self.Sig_getCarNumberInModify.emit(modifycar)
+
+    def getModifyButtonState(self):
+        modifybutton = self.mb.readInputStatus(1, '15d', 1)
+        self.Sig_changeModifyButtonColor.emit(modifybutton)
+
+    def getSetButtonState(self):
+        self.data['SET_BUTTON'] = self.mb.readInputStatus(1, '15c', 1)
+
+    def getCurrentCarNumberInModify(self):
+        list_data = self.mb.readInputRegisters(1, 76, 2)
+        self.Sig_gerCurrentInfoInModify.emit(list_data)
+   
+    #수정할 격납고 번호를 설정해주는 함수
+    #창 번호 변경해주는 함수
+    def setModifyCarWindow(self, idx):
+        self.setWindowIdx(22)
+        self.mb.writeSingleRegister(1, 82, idx)
 
 
-
-
+    def setWindowIdx(self, idx):
+        self.currentWindow = idx
+        self.mb.writeSingleRegister(1, 50, self.currentWindow)

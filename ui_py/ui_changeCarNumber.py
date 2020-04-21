@@ -217,6 +217,8 @@ class Ui_changeCarNumber(object):
         self.buttonModify.setObjectName(u"buttonModify")
         self.buttonModify.setMinimumSize(QSize(170, 130))
         self.buttonModify.setMaximumSize(QSize(170, 130))
+        self.buttonModify.setAutoFillBackground(True)
+        self.buttonModify.setStyleSheet(u"")
 
         self.gridLayout_6.addWidget(self.buttonModify, 2, 0, 1, 1)
 
@@ -243,9 +245,12 @@ class Ui_changeCarNumber(object):
 
         self.labelCarNumber = QLabel(self.frame_3)
         self.labelCarNumber.setObjectName(u"labelCarNumber")
+        self.labelCarNumber.setMinimumSize(QSize(252, 130))
         font1 = QFont()
         font1.setPointSize(75)
         self.labelCarNumber.setFont(font1)
+        self.labelCarNumber.setLayoutDirection(Qt.LeftToRight)
+        self.labelCarNumber.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.labelCarNumber, 1, 1, 1, 1)
 
@@ -280,17 +285,17 @@ class Ui_changeCarNumber(object):
 
         self.gridLayout_8.addWidget(self.label_5, 2, 0, 1, 1)
 
-        self.label_4 = QLabel(self.frame_5)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font2)
+        self.labelCurrentCar = QLabel(self.frame_5)
+        self.labelCurrentCar.setObjectName(u"labelCurrentCar")
+        self.labelCurrentCar.setFont(font2)
 
-        self.gridLayout_8.addWidget(self.label_4, 1, 1, 1, 1, Qt.AlignRight)
+        self.gridLayout_8.addWidget(self.labelCurrentCar, 1, 1, 1, 1, Qt.AlignRight)
 
-        self.label_6 = QLabel(self.frame_5)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setFont(font2)
+        self.labelCurrentPallet = QLabel(self.frame_5)
+        self.labelCurrentPallet.setObjectName(u"labelCurrentPallet")
+        self.labelCurrentPallet.setFont(font2)
 
-        self.gridLayout_8.addWidget(self.label_6, 2, 1, 1, 1, Qt.AlignRight)
+        self.gridLayout_8.addWidget(self.labelCurrentPallet, 2, 1, 1, 1, Qt.AlignRight)
 
         self.pushButton_2 = QPushButton(self.frame_5)
         self.pushButton_2.setObjectName(u"pushButton_2")
@@ -340,7 +345,7 @@ class Ui_changeCarNumber(object):
     def retranslateUi(self, changeCarNumber):
         changeCarNumber.setWindowTitle(QCoreApplication.translate("changeCarNumber", u"Form", None))
         self.buttonReturn.setText(QCoreApplication.translate("changeCarNumber", u"<", None))
-        self.label.setText(QCoreApplication.translate("changeCarNumber", u"\ucc28\ub7c9 \ubc88\ud638 \uc218\uc815 \ud68c\uba74", None))
+        self.label.setText(QCoreApplication.translate("changeCarNumber", u"\ucc28\ub7c9 \ubc88\ud638 \uc218\uc815 \ud654\uba74", None))
         self.button1.setText(QCoreApplication.translate("changeCarNumber", u"1", None))
         self.button2.setText(QCoreApplication.translate("changeCarNumber", u"2", None))
         self.button3.setText(QCoreApplication.translate("changeCarNumber", u"3", None))
@@ -356,12 +361,12 @@ class Ui_changeCarNumber(object):
         self.buttonBefore.setText(QCoreApplication.translate("changeCarNumber", u"\uc774\uc804", None))
         self.buttonModify.setText(QCoreApplication.translate("changeCarNumber", u"\uc218\uc815", None))
         self.buttonSet.setText(QCoreApplication.translate("changeCarNumber", u"\uc644\ub8cc", None))
-        self.labelCarNumber.setText(QCoreApplication.translate("changeCarNumber", u"XXXX", None))
+        self.labelCarNumber.setText("")
         self.label_3.setText(QCoreApplication.translate("changeCarNumber", u"\ucc28\ub7c9 \ubc88\ud638.", None))
         self.pushButton.setText(QCoreApplication.translate("changeCarNumber", u"\uc801  \uc7ac", None))
         self.label_5.setText(QCoreApplication.translate("changeCarNumber", u"\ud30c\ub808\ud2b8 \ubc88\ud638.", None))
-        self.label_4.setText(QCoreApplication.translate("changeCarNumber", u"XX", None))
-        self.label_6.setText(QCoreApplication.translate("changeCarNumber", u"XX", None))
+        self.labelCurrentCar.setText(QCoreApplication.translate("changeCarNumber", u"XX", None))
+        self.labelCurrentPallet.setText(QCoreApplication.translate("changeCarNumber", u"XX", None))
         self.pushButton_2.setText(QCoreApplication.translate("changeCarNumber", u"\uc0ad  \uc81c", None))
         self.label_7.setText(QCoreApplication.translate("changeCarNumber", u"IMG", None))
         self.label_8.setText(QCoreApplication.translate("changeCarNumber", u"IMG", None))

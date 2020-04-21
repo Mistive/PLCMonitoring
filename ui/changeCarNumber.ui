@@ -91,7 +91,7 @@
          </font>
         </property>
         <property name="text">
-         <string>차량 번호 수정 회면</string>
+         <string>차량 번호 수정 화면</string>
         </property>
        </widget>
       </item>
@@ -515,6 +515,12 @@
                   <height>130</height>
                  </size>
                 </property>
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
                  <string>수정</string>
                 </property>
@@ -572,13 +578,25 @@
          </item>
          <item row="1" column="1">
           <widget class="QLabel" name="labelCarNumber">
+           <property name="minimumSize">
+            <size>
+             <width>252</width>
+             <height>130</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>75</pointsize>
             </font>
            </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
            <property name="text">
-            <string>XXXX</string>
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -643,7 +661,7 @@
           </widget>
          </item>
          <item row="1" column="1" alignment="Qt::AlignRight">
-          <widget class="QLabel" name="label_4">
+          <widget class="QLabel" name="labelCurrentCar">
            <property name="font">
             <font>
              <pointsize>20</pointsize>
@@ -655,7 +673,7 @@
           </widget>
          </item>
          <item row="2" column="1" alignment="Qt::AlignRight">
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="labelCurrentPallet">
            <property name="font">
             <font>
              <pointsize>20</pointsize>

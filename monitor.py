@@ -20,14 +20,17 @@ signal/slot 기능을 활용하여 community.py의 thread에서 연산이 완료
 '''
 다음 해결과제는 Gui에서 처리한 값을 어떻게 community로 보낼 것인가?
 '''
+sig = signalThread()
 class Monitor(QMainWindow, Ui_monitor):
+
 
     def __init__(self):
         super(Monitor, self).__init__()
+
         self.ui = Ui_monitor()
         self.ui.setupUi(self)
 
-        self.sig = signalThread()
+        self.sig = sig
         self.sig.start()
 
         self.carList = [None]   #주차 격납고 리스트
@@ -51,19 +54,16 @@ class Monitor(QMainWindow, Ui_monitor):
         self.ui.scrollArea.verticalScrollBar().rangeChanged.connect(self.update_init_scrollArea)
 
 
-
         #click을 눌렀을 경우 데이터를 communication.py에 보내기
         data = {}
-        data['send'] = 'Good'
-        self.ui.buttonIn.clicked.connect(lambda: self.sig.sendSignal(data))
+        # data['send'] = 'Good'
+        # self.ui.buttonIn.clicked.connect(lambda: self.sig.sendSignal(data))
 
     @Slot()
     def update_init_scrollArea(self):
         scrollbar = self.ui.scrollArea.verticalScrollBar()
         QScrollBar.setSingleStep(scrollbar, 100)
         QScrollBar.setValue(scrollbar, scrollbar.maximum())
-
-
 
     @Slot()
     def update_carNumber(self, car_number):
@@ -83,6 +83,7 @@ class Monitor(QMainWindow, Ui_monitor):
     @Slot()
     def update_info(self):
         # try:
+
         print(self.sig.data)
 
         self.ui.labelParkingNum.setText(str(self.sig.data['info']['전체주차']))
@@ -97,9 +98,14 @@ class Monitor(QMainWindow, Ui_monitor):
         for idx, value in enumerate(self.sig.data['parkinginfo']):
             if value['img'] is None or value['number'] is None: continue
             car = self.carList[idx]
-            car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][value['img']])
+            if value['number'] is not 0:
+                car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][2])
+            else:
+                car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][value['img']])
             if value['number'] is not 0:
                 car['widget'].labelCarNum.setText(str(value['number']))
+            else:
+                car['widget'].labelCarNum.setText('XXXX')
 
         for idx, lift in enumerate(self.carCList):
             if lift is None: continue
@@ -242,7 +248,7 @@ class Monitor(QMainWindow, Ui_monitor):
 
         for idx, car in enumerate(self.carList):
             if car is None: continue
-            clickable(car['widget']).connect(self.changeCarNumberWindow)
+            clickable(car['widget']).connect(lambda i=idx: self.changeCarNumberWindow(i))
 
             car['widget'].labelCarIdx.setText(car['type'] + "\n" + str(idx))
             car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][1])
@@ -262,9 +268,9 @@ class Monitor(QMainWindow, Ui_monitor):
             else:
                 lift['widget'].labelCarImg.setPixmap(self.img_lift[0])
 
-    def changeCarNumberWindow(self):
-        self.cN = changeCarNumber()
-        self.cN.showFullScreen()
+    def changeCarNumberWindow(self, idx):
+        self.cN = changeCarNumber(idx)
+        self.cN.show()
 
 
 
@@ -277,7 +283,7 @@ def clickable(widget):
         def eventFilter(self, obj, event):
 
             if obj == widget:
-                if event.type() == QEvent.MouseButtonRelease:
+                if event.type() == QEvent.MouseButtonDblClick:
                     if obj.rect().contains(event.pos()):
                         self.clicked.emit()
                         # The developer can opt for .emit(obj) to get the object within the slot.
@@ -288,19 +294,6 @@ def clickable(widget):
     filter = Filter(widget)
     widget.installEventFilter(filter)
     return filter.clicked
-
-
-class changeCarNumber(QWidget, Ui_changeCarNumber):
-    def __init__(self, parent=None):
-        super(changeCarNumber, self).__init__(parent)
-        self.setupUi(self)
-
-        self.buttonReturn.clicked.connect(self.returnWindow)
-
-    def returnWindow(self):
-        self.close()
-
-
 
 
 class leftCar(QFrame, Ui_leftCar):
@@ -337,4 +330,76 @@ class rightStorage(QFrame, Ui_rightStorage):
     def __init__(self, parent=None):
         super(rightStorage, self).__init__()
         self.setupUi(self)
+
+
+class changeCarNumber(QWidget, Ui_changeCarNumber):
+    def __init__(self, idx):
+        super(changeCarNumber, self).__init__()
+        self.setupUi(self)
+        self.idx = idx
+        self.ui = self
+        self.sig = sig
+
+        self.sig.setModifyCarWindow(self.idx)
+        self.buttonReturn.clicked.connect(self.returnWindow)
+        self.connectButton()
+
+
+        self.sig.Sig_getCarNumberInModify.connect(self.update_carNumber)
+        self.sig.Sig_changeModifyButtonColor.connect(self.update_ModifybuttonColor)
+        self.sig.Sig_gerCurrentInfoInModify.connect(self.update_ModifyInfo)
+
+        self.init_update_window()
+
+    def update_info(self):
+        pass
+
+
+    def init_update_window(self):
+        #차량 번호 수정
+
+        self.sig.getCarNumberInModify()
+        self.sig.getCurrentCarNumberInModify()
+
+
+    @Slot(list)
+    def update_ModifyInfo(self, datalist):
+        pallet, car = datalist
+        self.ui.labelCurrentCar.setText(str(car))
+        self.ui.labelCurrentPallet.setText(str(pallet))
+
+    @Slot(list)
+    def update_ModifybuttonColor(self, state):
+        state = state[0]
+        if state == 1:
+            self.buttonModify.setStyleSheet("background-color: rgb(255,0,0)")
+        else:
+            self.buttonModify.setStyleSheet("")
+    @Slot()
+    # '차량 번호 수정 화면' 차량 번호 Label 반영 함수
+    def update_carNumber(self, car_number):
+        car_number = car_number[0]
+        self.ui.labelCarNumber.setText(str(car_number))
+
+    # 차량 번호 입력 버튼의 clicked 시그널과 Slot 함수 mapping
+    def connectButton(self):
+        self.button_list = [self.ui.button0, self.ui.button1, self.ui.button2, self.ui.button3, self.ui.button4,
+                            self.ui.button5, self.ui.button6, self.ui.button7, self.ui.button8, self.ui.button9]
+
+        for i, btn in enumerate(self.button_list):
+            # btn.clicked.connect(lambda stat=False, idx=i: self.setCarNumber(idx))
+            btn.clicked.connect(lambda stat=False, idx=i: self.sig.buttonCarNumberInModify(idx))
+
+        self.ui.buttonClear.clicked.connect(self.sig.buttonClearInModify)
+        self.ui.buttonNext.clicked.connect(self.sig.buttonNextInModify)
+        self.ui.buttonBefore.clicked.connect(self.sig.buttonBeforeInModify)
+        self.ui.buttonModify.clicked.connect(self.sig.buttonModifyInModify)
+        self.ui.buttonSet.pressed.connect(lambda: self.sig.buttonSetInModify(True))
+        self.ui.buttonSet.released.connect(lambda: self.sig.buttonSetInModify(False))
+
+
+    def returnWindow(self):
+        self.sig.setWindowIdx(12)
+        self.close()
+
 
