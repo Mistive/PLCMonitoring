@@ -95,17 +95,14 @@ class Monitor(QMainWindow, Ui_monitor):
         self.ui.labelINSell.setText(str(self.sig.data['info']['적재파렛']))
         self.ui.labelOUTSell.setText(str(self.sig.data['info']['출고파렛']))
 
+
+#차량 검색 화면 업데이트
         for idx, value in enumerate(self.sig.data['parkinginfo']):
             if value['img'] is None or value['number'] is None: continue
             car = self.carList[idx]
-            if value['number'] is not 0:
-                car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][2])
-            else:
-                car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][value['img']])
-            if value['number'] is not 0:
-                car['widget'].labelCarNum.setText(str(value['number']))
-            else:
-                car['widget'].labelCarNum.setText('XXXX')
+            car['widget'].labelCarImg.setPixmap(self.img_parking[car['tidx']][value['img']])
+            car['widget'].labelCarNum.setText(str(value['number']))
+
 
         for idx, lift in enumerate(self.carCList):
             if lift is None: continue

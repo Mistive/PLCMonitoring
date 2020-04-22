@@ -215,5 +215,11 @@ class signalThread(QThread):
 
 
     def setWindowIdx(self, idx):
+        if not self.ser.is_open:
+            return
         self.currentWindow = idx
         self.mb.writeSingleRegister(1, 50, self.currentWindow)
+        while True:
+            if self.mb.readInputRegisters(1, 52, 1)[0] == self.currentWindow:
+                break
+
